@@ -1,8 +1,8 @@
 from django.db import models
+from taggit.managers import TaggableManager
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-from taggit.managers import TaggableManager
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -29,6 +29,7 @@ class Post(models.Model):
                               default='draft')
     objects = models.Manager() #Default manager
     published = PublishedManager() #Custom manager
+    tags = TaggableManager()
 
 
     def get_absolute_url(self):
