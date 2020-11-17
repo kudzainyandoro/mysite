@@ -8,6 +8,7 @@ from . forms import EmailPostForm, CommentForm
 from django.core.mail import send_mail
 from django.db.models import Count
 from taggit.models import Tag
+from django.db.models import Count
 
 def post_list(request, tag_slug=None):
     object_list = Post.published.all()
@@ -67,7 +68,8 @@ def post_detail(request, year, month, day, post):
                   {'post': post,
                   'comments': comments,
                   'new_comment': new_comment,
-                  'comment_form': comment_form})
+                  'comment_form': comment_form,
+                  'similar_posts': similar_posts})
 
 def post_share(request, post_id):
     # Retrieve post by id
