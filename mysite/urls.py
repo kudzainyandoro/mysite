@@ -4,7 +4,8 @@ from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap
 sitemaps = {
     'posts': PostSitemap,
-}
+    }
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
